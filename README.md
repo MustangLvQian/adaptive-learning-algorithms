@@ -4,7 +4,9 @@ Framework-agnostic, dependency-free TypeScript algorithms for building adaptive
 practice into a learning app, plus a feedback-to-prompt pipeline for improving
 the algorithms from real user feedback.
 
-This repository contains three independent things:
+This repository contains a set of independent, mostly dependency-free pieces —
+two algorithm packages that do the learning work, and a toolbox of small
+utilities that grew out of building a real product with them.
 
 | Package | What it does | Runtime deps |
 | --- | --- | --- |
@@ -15,6 +17,21 @@ This repository contains three independent things:
 Both algorithm packages are pure functions over plain data. They do not read
 storage, call the network, or know anything about your framework. Bring your own
 event log and item catalogue.
+
+## Toolbox
+
+Small, self-contained utilities for the unglamorous parts of shipping a product.
+Each is a library plus a CLI, with tests.
+
+| Tool | What it guards against |
+| --- | --- |
+| [`pitfall-guardrails`](./tools/pitfall-guardrails) | The same bug happening a third time. A Markdown registry where a record with no guard is not registered, plus a runner for the guards. |
+| [`check-templates`](./tools/check-templates) | WeChat Mini Program WXML/WXSS mistakes `node --check` cannot see, and SVGs that render as nothing inside `<image>`. |
+| [`check-skills`](./tools/check-skills) | Agent Skills that are present but never selected, because their description says *what* and not *when*. |
+| [`check-service-worker`](./tools/check-service-worker) | The PWA caching bugs that fail silently: unversioned `CACHE_NAME`, cache-first navigation, `CORE_ASSETS` that 404. |
+| [`agent-skill-bundle`](./tools/agent-skill-bundle) | A new machine not matching the others, and two skills competing for the same request. |
+| [`compliance-kit`](./tools/compliance-kit) | Third-party license obligations, Chinese software-copyright source pagination, and authorship evidence via content hashes. |
+| [`audio-kit`](./tools/audio-kit) | Needing a TTS engine for a UI chime, and silent-`play()` failures from a missing audio asset. |
 
 ## Why these exist
 
@@ -53,8 +70,16 @@ packages/
   learning-engine/     adaptive selection + calibration
 tools/
   feedback-to-prompt/  feedback -> draft prompt improvements
+  pitfall-guardrails/  registry of pitfalls, each with a guard
+  check-templates/     WeChat Mini Program WXML/WXSS/SVG linter
+  check-skills/        Agent Skill discoverability linter
+  check-service-worker/PWA service worker guard
+  agent-skill-bundle/  declare, install and de-compete Agent Skills
+  compliance-kit/      licenses, 软著 pagination, content snapshots
+  audio-kit/           procedural chime + audio asset manifest
 docs/
   algorithm-notes.md   design notes and the rules in one place
+  pitfalls.md          this repo's own registry (dogfoods pitfall-guardrails)
 ```
 
 ## Scope and non-goals

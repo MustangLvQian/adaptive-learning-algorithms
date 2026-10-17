@@ -15,7 +15,9 @@
     "test": "node --test",
     "build": "npm run build --workspaces --if-present",
     "typecheck": "tsc -b packages/spaced-repetition packages/learning-engine",
-    "feedback:dry": "node tools/feedback-to-prompt/src/run.mjs --target learning-engine --input tools/feedback-to-prompt/examples/feedback.sample.jsonl --out feedback-out"
+    "feedback:dry": "node tools/feedback-to-prompt/src/run.mjs --target learning-engine --input tools/feedback-to-prompt/examples/feedback.sample.jsonl --out feedback-out",
+    "guard": "node tools/pitfall-guardrails/src/cli.mjs docs/pitfalls.md",
+    "guard:run": "node tools/pitfall-guardrails/src/cli.mjs docs/pitfalls.md --run"
   },
   "devDependencies": {
     "typescript": "^7.0.2"

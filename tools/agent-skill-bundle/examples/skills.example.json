@@ -1,0 +1,16 @@
+{
+  "target": "~/.agents/skills",
+  "sources": [
+    {
+      "type": "local",
+      "path": ".agents/skills",
+      "skills": ["ycx-verify"]
+    },
+    {
+      "type": "git",
+      "repo": "https://github.com/example/skills",
+      "sub": "skills",
+      "skills": ["animate", "review-animations", "improve-animations"]
+    }
+  ]
+}
