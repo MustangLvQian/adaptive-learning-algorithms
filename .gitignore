@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Feedback pipeline output is generated locally and may contain user text.
+feedback-out/
+.env
+.env.*

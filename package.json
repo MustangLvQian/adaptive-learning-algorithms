@@ -1,0 +1,23 @@
+{
+  "name": "adaptive-learning-algorithms",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open-source spaced-repetition and adaptive learning-engine algorithms, plus a feedback-to-prompt improvement pipeline.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.6"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "tsc -b packages/spaced-repetition packages/learning-engine",
+    "feedback:dry": "node tools/feedback-to-prompt/src/run.mjs --target learning-engine --input tools/feedback-to-prompt/examples/feedback.sample.jsonl --out feedback-out"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}

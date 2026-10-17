@@ -1,0 +1,34 @@
+{
+  "name": "@adaptive-learning/spaced-repetition",
+  "version": "0.1.0",
+  "description": "A small, dependency-free spaced-repetition scheduler: an expanding interval ladder driven by correctness, response support and self-rated confidence.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "spaced-repetition",
+    "srs",
+    "learning",
+    "education",
+    "scheduler"
+  ],
+  "engines": {
+    "node": ">=22.6"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test"
+  }
+}
